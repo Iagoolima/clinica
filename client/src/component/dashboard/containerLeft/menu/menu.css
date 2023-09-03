@@ -1,0 +1,155 @@
+#container-left-menu{
+    position: fixed;
+    left: -160px;
+    background-color:rgb(212, 92, 112);;
+    padding: 40px 20px; 
+    width: 15rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2rem;
+    box-shadow: 1px 1px 10px silver;
+    transition: left 0.3s ease;
+    z-index: 100;
+    
+
+}
+
+#container-left-menu.open {
+    left: 0;
+    align-items: center;
+  
+    
+}
+#box-img-menu img{
+    width: 100%;
+    height: auto;
+  
+}
+#box-img-menu{
+    display: none;
+}
+#box-img-menu.open{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+}
+
+
+.button-icon-menu{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.4em;
+    margin-right: 5px;
+    display: flex;
+    height: auto;
+    align-items: center;
+   
+   
+  
+}
+
+
+
+.container-left-menu h1, p{
+    color:white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#box-button-menu{
+    padding-top: 1rem;
+    display: flex;
+    width: auto;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+   
+
+    
+    
+    
+}
+
+.button-menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid transparent;
+    
+    width: 100%;
+    height: 3rem;
+
+
+    color: white;
+    font-weight: 1000;
+    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+
+}
+
+.button-menu p {
+    font-size: 1.5em;
+}
+.button-menu:hover{
+    opacity: 100;
+}
+
+@media(max-width: 768px){
+    #container-left-menu{
+        left: 0;
+        height: 4rem;
+        flex-direction: row;
+        align-items: center;
+        padding: 20px;
+        width: 100%;
+        
+    }
+
+    #box-img-menu img{
+        width: 90%;
+    }
+    .button-icon-menu{
+        margin-right: 5px;
+    }
+    .button-menu p{
+        font-size: 1em;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #box-button-menu{
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+        height: 100%;
+        padding-top: 0;
+    }
+    #box-button-menu.open{
+        
+        flex-direction: column;
+        gap: 2rem;
+   }
+
+    
+    #container-left-menu.open {
+        height: auto;
+        align-items: center;
+        transition: 1s; 
+    }
+
+    #box-img-menu.open{
+        display: none;
+    }
+    .footer-menu{
+    
+        display: none ;
+    }
+}

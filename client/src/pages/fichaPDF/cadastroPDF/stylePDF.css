@@ -1,0 +1,107 @@
+.container-pdf {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 1rem;
+    margin: 0;
+}
+
+.header-pdf {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+}
+
+.header-pdf button {
+    color: black;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.header-pdf button:hover {
+    color: rgb(129, 129, 129);
+}
+
+.hide-header {
+    display: none;
+}
+
+.box-pdf {
+    width: 20cm;
+    
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.box-title {
+
+    color: pink;
+}
+
+.box-content-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 0.5rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+
+}
+
+.box-data-ficha {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+
+
+}
+
+.box-data-ficha h3 {
+    display: flex;
+    align-items: center;
+
+}
+
+.box-data-ficha p {
+    padding-left: 5px;
+    color: black;
+    font-weight: lighter;
+    font-size: 0.9em;
+}
+
+.list-anotacoes {
+    width: 100%;
+    height: auto;
+    align-items: flex-start;
+    justify-content: center;
+
+    display: flex;
+    flex-direction: column;
+
+    color: silver;
+    gap: 1.5rem;
+}
+
+.list-anotacoes p {
+    color: black;
+}
+
+.box-anotacoes {
+    width: 100%;
+}
+
+.line-pdf {
+    width: 100%;
+    height: 2rem;
+    border-bottom: 1px solid black;
+}

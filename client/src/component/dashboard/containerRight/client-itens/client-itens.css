@@ -1,0 +1,192 @@
+.container-Client {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+}
+
+.box-input-search{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    height: auto;
+    align-items: center;
+}
+
+.box-input-search input{
+    width: 15rem;
+    padding: 3px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid silver;
+    background-color: transparent;
+    margin-left: 10px;
+}
+
+.button-pesquisar{
+    background-color: transparent;
+    color: black;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+.container-modal{
+    background-color: rgba(255, 255, 255, 0.322);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.card-modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    background-color: white;
+    box-shadow: 1px 1px 10px silver;
+    height: auto;
+    gap: 1rem;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+
+.input-modal{
+    width: 25rem;
+    min-height: 10rem;
+    white-space: pre-wrap;
+    padding: 5px;
+    resize: vertical; 
+    border: 1px solid silver;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+.buttons-modal{
+    display: flex;
+    gap: 1rem;
+}
+.button-modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    width: 8rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+
+.button-green-modal{
+    background-color: rgb(93, 223, 93);
+    
+}
+
+.button-red-modal{
+    background-color: rgb(252, 88, 88);
+    
+}
+
+
+
+
+.container-client-modal{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+   
+}
+
+.container-left-clientes{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+.container-right-modal{
+    display: flex;
+    align-items: flex-start;
+    height: auto;
+    width: auto;
+}
+
+
+.container-modal-client{
+    
+    height: 100%;
+    width: 25rem;
+    display: flex;
+   
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 1000;
+    
+    
+    
+}
+
+.card-modal-client{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    background-color: white;
+    box-shadow: 1px 1px 10px silver;
+    height: auto;
+    gap: 1rem;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.card-modal-client p{
+    width: 100%;
+    left: 0;
+}
+
+
+
+
+
+.button-orange-modal{
+    background: rgb(247, 194, 93);
+    width: 7rem;
+}
+
+
+
+
+
+.edit-client{
+    
+    border: 2px solid rgb(182, 182, 182);
+    border-radius: 10px;
+    padding: 5px;
+    width: 90%;
+}
+
+@media(max-width:1180px) {
+    .container-Client {
+        justify-content: center;
+    }
+}
