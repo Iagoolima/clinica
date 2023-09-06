@@ -30,11 +30,7 @@ export default function Client() {
     const [editedClient, setEditedClient] = useState<cliente | null>(null);
 
 
-
-
-
-
-
+    //função de fazer pesquisa de usuario de acordo com nome e pronturario 
     const handleSearch = async () => {
         try {
             const response = await api.get(`/clientes/read?search=${searchText}`);
@@ -45,27 +41,20 @@ export default function Client() {
     };
 
 
+     // Chama a função ao montar o componente, ess função é a função de exibir os usuarios do cadastro
+     useEffect(() => {
+        handleSearch();
+    }, []);
 
 
+    //função de exibir o modal de informar os outros dados do usuario que nao exibido na linha 
     const handleInfoClick = (client: cliente) => {
-
         setSelectedClient(client);
         setIsModalInfo(true);
         setIsDeleteModalVisible(false);
     };
 
-
-
-
-
-
-    useEffect(() => {
-        handleSearch(); // Chama a função ao montar o componente, ess função é a função de exibir os usuarios do cadastro
-    }, []);
-
-
-
-
+    //função de exibir o modal de confirmção para deletar usuario
     const handleDeleteClient = (client: cliente) => {
         setClientToDelete(client);
         setIsDeleteModalVisible(true);
@@ -73,15 +62,12 @@ export default function Client() {
         setIsEditModalVisible(false);
     };
 
-
+    //função de deletar usuario 
     const handleDeleteClientConfirm = async (client: cliente | null) => {
         if (client) {
             try {
-                const deleteUrl = `/clientes/delete/${client.id}`;
-                console.log('Delete URL:', deleteUrl)
                 await api.delete(`/clientes/delete/${client.id}`);
-                // Após a deleção, atualize a lista de clientes refazendo a busca de dados
-                handleSearch();
+                handleSearch(); //função de atualizar a exibição apos deletar usuarios
                 setIsDeleteModalVisible(false);
             } catch (error) {
                 console.error('Erro ao deletar o cliente:', error);
@@ -89,20 +75,20 @@ export default function Client() {
         }
     };
 
-
+    //função de exibir o modal de edição de usuario
     const handleEditClick = (client: cliente) => {
         setIsModalInfo(false);
         setEditedClient(client);
         setIsEditModalVisible(true);
     };
 
+    //função de edição de usuario 
     const handleSaveEdit = async () => {
         try {
-            // Faça uma solicitação para atualizar o cliente no servidor
             if (editedClient) {
                 await api.put(`/clientes/update/${editedClient.id}`, editedClient);
                 setIsEditModalVisible(false);
-                handleSearch(); // Atualize a lista de clientes após a edição
+                handleSearch(); //função de atualizar a exibição apos deletar usuarios
             }
         } catch (error) {
             console.error('Erro ao atualizar cliente:', error);
@@ -110,8 +96,10 @@ export default function Client() {
         }
     }
 
-    const navigate = useNavigate();
 
+
+    const navigate = useNavigate();
+    //função para navegar para pagina de imprimir pdf e passando o os dados do usuario pelo state onde fica armazenado os nomes.
     function imprimirPDF() {
         navigate('/ficha-pdf', { state: selectedClient })
     }
@@ -121,6 +109,8 @@ export default function Client() {
     return (
         <div className="container-Client">
             <div className="box-input-search">
+                
+                {/* campo de busca de usuario por nome e Prontuario */}
                 <input
                     type="text"
                     placeholder="Pesquise..."
@@ -131,27 +121,26 @@ export default function Client() {
                             handleSearch()
                         }
                     }}
+
                 />
-
-
                 <button className="button-pesquisar" onClick={handleSearch}><FaSearch size={'15px'} color="silver" cursor={'pointer'} /></button>
+
             </div>
 
-
-
             <div className="container-client-modal">
+
                 <div className="container-left-clientes">
                     {clients.map(client => (
+                        //box exibe todos os usuarios do banco de dados 
                         <ClientBox
                             key={client.id}
                             pront={client.pront}
                             name={client.nome}
                             tel={client.tel}
                             id={client.id}
-                            onInfoClick={() => handleInfoClick(client)}
-                            onDeleteUser={() => handleDeleteClient(client)}
-                            onEditClick={() => handleEditClick(client)} // Adicione esta linha
-
+                            onInfoClick={() => handleInfoClick(client)}//função de ver outras informações do cliente
+                            onDeleteUser={() => handleDeleteClient(client)}// função de apagar usuario
+                            onEditClick={() => handleEditClick(client)} // função para editar usuraio
                         />
                     ))}
                 </div>
@@ -165,7 +154,7 @@ export default function Client() {
 
                 <div className="container-right-modal">
 
-
+                    {/* modal de exibição para deletar usuario  */}
                     {isDeleteModalVisible && (
                         <div className="container-modal-client">
                             <div className="card-modal-client">
@@ -173,13 +162,15 @@ export default function Client() {
                                 <p>Tem certeza de que deseja deletar o usuário: {clientToDelete?.nome}</p>
                                 <div className="buttons-modal">
                                     <button className="button-modal button-red-modal" onClick={() => setIsDeleteModalVisible(false)}>Cancelar</button>
+
+                                    {/* qundo clicado na função de delete, ele chama a função passando o usuario selecionado com parametro */}
                                     <button className="button-modal button-green-modal" onClick={() => handleDeleteClientConfirm(clientToDelete)}>Deletar</button>
                                 </div>
                             </div>
                         </div>
                     )}
 
-
+                    {/* modal de exibição para exibi outras informações de usuario  */}
                     {isModalInfo && (
                         <div className="container-modal-client">
                             <div className="card-modal-client">
@@ -193,7 +184,9 @@ export default function Client() {
                                 <p>Email: {selectedClient?.email}</p>
                                 <p>Endereço: {selectedClient?.endereco}</p>
                                 <div className="buttons-modal">
+                                    {/* função de editar os dados do usuario */}
                                     <button className="button-modal button-orange-modal" onClick={() => selectedClient && handleEditClick(selectedClient)}>Editar</button>
+                                    {/* função de encaminha o usuario para tela de imprimir ficha  */}
                                     <button className="button-modal button-orange-modal" onClick={imprimirPDF}>PDF</button>
                                     <button className="button-modal button-orange-modal" onClick={() => setIsModalInfo(false)}>Fechar</button>
 
@@ -203,7 +196,7 @@ export default function Client() {
                         </div>
                     )}
 
-
+                    {/* modal de exibição para dar opções de editar os dados de usuario  */}
                     {isEditModalVisible && (
                         <div className="container-modal-client">
                             <div className="card-modal-client">
@@ -263,6 +256,8 @@ export default function Client() {
 
                                 <div className="buttons-modal">
                                     <button className="button-modal button-red-modal" onClick={() => setIsEditModalVisible(false)}>Cancelar</button>
+                                    {/* quando clicado em salvar, ele manda um update ao banco de dados de dados atualizado o item  */}
+
                                     <button className="button-modal button-green-modal" onClick={handleSaveEdit}>Salvar</button>
                                 </div>
                             </div>

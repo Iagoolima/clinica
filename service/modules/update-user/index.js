@@ -21,6 +21,7 @@ router.put('/:id', async (req, res) => {
         await db.query(query, [id, pront, nome, idade, cpf, tel, endereco, email, id]);
 
         res.json(console.log('editado com sucesso'));
+        console.log("usuario atualizado")
     } catch (error) {
         console.error('erro ao atualizar cliente', error);
         res.status(500).json({ error: 'erro ao atualizar cliente' });

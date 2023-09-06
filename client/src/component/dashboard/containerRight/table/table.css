@@ -1,0 +1,17 @@
+.container-table{
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap
+    
+}
+
+.box-tables{
+    width: 100%;
+    height: auto;
+    display: flex;
+    
+    gap: 1rem;
+   
+}
